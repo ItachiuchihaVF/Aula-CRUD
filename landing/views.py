@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 from .models import Aluno, Usuario
 
 # Create your views here.
+def home(request):
+    return render(request, 'base.html')
 
-def index(request):
+
+def cadastro(request):
     if request.method == 'POST':
         data_usuario = Usuario()
         data_usuario.email = request.POST['email']
@@ -15,10 +18,10 @@ def index(request):
         data_aluno.frase = request.POST['frase']
         data_aluno.save()
         
-    return render(request, 'index.html')
+    return render(request, 'cadastro.html')
 
 def listar(request):
-    listar_frase = Aluno.objects.filter(ativo=true).all()
+    listar_frase = Aluno.objects.filter(ativo=True).all()
     args = {
         'listar_frase':listar_frase
     }
@@ -29,4 +32,17 @@ def deleter(resquest):
         item.ativo = false 
         item.save()
         return redirect('/aluno/listar')
-    return render(requet, 'lista.html') 
+    return render(request, 'lista.html') 
+
+
+def login(request):
+    if request.method == 'POST':
+      data_usuario = Usuario()
+      data_aluno.email = request.POST['email']
+      data_usuario.senha = request.POST['senha']
+      data_usuario.save()
+    
+    return render(request, 'login.html')
+
+def index(request):
+    return render(request, 'index.html')

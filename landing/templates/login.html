@@ -1,0 +1,21 @@
+{% extends "home.html" %}
+{% load static %}
+{% block content %}
+ 
+
+
+<h1 class="titulo-index">Faça seu login</h1>
+
+<form action="aluno/cadastro" method="post">
+   
+    <label for="email">Email: </label>
+    <input name="email" type="email" required>
+
+    <label for="senha">Senha: </label>
+    <input name="senha" type="password" required>
+
+    
+    <button type="submit">Enviar</button>
+
+</form>
+{% endblock %}
